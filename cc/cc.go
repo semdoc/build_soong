@@ -275,7 +275,7 @@ var (
 // to construct the output file.  Behavior can be customized with a Customizer interface
 type Module struct {
 	android.ModuleBase
-	android.DefaultableModule
+	android.DefaultableModuleBase
 
 	Properties BaseProperties
 	unused     UnusedProperties
@@ -339,7 +339,7 @@ func (c *Module) Init() android.Module {
 
 	android.InitAndroidArchModule(c, c.hod, c.multilib)
 
-	android.InitDefaultableModule(c, c)
+	android.InitDefaultableModule(c)
 
 	return c
 }
@@ -1155,7 +1155,7 @@ func (c *Module) HostToolPath() android.OptionalPath {
 //
 type Defaults struct {
 	android.ModuleBase
-	android.DefaultsModule
+	android.DefaultsModuleBase
 }
 
 func (*Defaults) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -1192,7 +1192,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&VndkProperties{},
 	)
 
-	android.InitDefaultsModule(module, module)
+	android.InitDefaultsModule(module)
 
 	return module
 }
