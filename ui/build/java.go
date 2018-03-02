@@ -101,7 +101,6 @@ func checkJavaVersion(ctx Context, config Config) {
 		ctx.Println("Please follow the machine setup instructions at:")
 		ctx.Println("    https://source.android.com/source/initializing.html")
 		ctx.Println("***************************************************************")
-		ctx.Fatalln("stop")
 	}
 
 	if runtime.GOOS == "linux" {
@@ -110,14 +109,13 @@ func checkJavaVersion(ctx Context, config Config) {
 		// http://b/62123342
 		if !strings.Contains(java_version, "openjdk") && !experimental_use_openjdk9 {
 			ctx.Println("*******************************************************")
-			ctx.Println("You are attempting to build with an unsupported JDK.")
+			ctx.Println("You are building with an unsupported JDK.")
 			ctx.Println()
 			ctx.Println("Only an OpenJDK based JDK is supported.")
 			ctx.Println()
 			ctx.Println("Please follow the machine setup instructions at:")
 			ctx.Println("    https://source.android.com/source/initializing.html")
 			ctx.Println("*******************************************************")
-			ctx.Fatalln("stop")
 		}
 	} else { // darwin
 		if strings.Contains(java_version, "openjdk") {
@@ -129,7 +127,6 @@ func checkJavaVersion(ctx Context, config Config) {
 			ctx.Println("Please follow the machine setup instructions at:")
 			ctx.Println("    https://source.android.com/source/initializing.html")
 			ctx.Println("*******************************************************")
-			ctx.Fatalln("stop")
 		}
 	}
 
@@ -158,6 +155,5 @@ func checkJavaVersion(ctx Context, config Config) {
 		ctx.Println("Please follow the machine setup instructions at:")
 		ctx.Println("    https://source.android.com/source/initializing.html")
 		ctx.Println("****************************************************************")
-		ctx.Fatalln("stop")
 	}
 }
